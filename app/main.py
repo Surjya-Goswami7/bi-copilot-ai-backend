@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 
 from app.api.upload import router as upload_router
+from app.api.ai import router as ai_router
 
 app = FastAPI(
     title="BI Copilot AI",
@@ -9,6 +10,7 @@ app = FastAPI(
 )
 
 app.include_router(upload_router)
+app.include_router(ai_router)
 
 
 @app.get("/")
