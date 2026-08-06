@@ -1,6 +1,7 @@
 from groq import Groq
 from dotenv import load_dotenv
 import os
+import json
 
 load_dotenv()
 
@@ -92,4 +93,6 @@ Rules:
         temperature=0.2
     )
 
-    return response.choices[0].message.content
+    content = response.choices[0].message.content
+
+    return json.loads(content)
