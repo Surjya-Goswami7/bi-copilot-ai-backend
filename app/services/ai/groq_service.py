@@ -63,6 +63,13 @@ Use exactly this format:
     "measures":[
         ""
     ],
+      "dax_measures":[
+        {{
+            "measure_name":"",
+            "dax_formula":"",
+            "description":""
+        }}
+    ],
     "charts":[
         {{
             "title":"",
@@ -80,6 +87,20 @@ Rules:
 - No markdown.
 - No explanation.
 - No ```json.
+
+DAX Rules:
+
+- Generate DAX measures based on the dataset and business requirement.
+- Do not assume the dataset is a Sales dataset.
+- Generate measures appropriate for the identified dataset type.
+- Generate MTD or YTD measures only when a suitable date column exists and time-based analysis is relevant.
+- For HR datasets, generate relevant HR measures when supported by the data.
+- For Inventory datasets, generate relevant inventory measures when supported by the data.
+- For Sales datasets, generate relevant sales measures when supported by the data.
+- Use only columns that actually exist in the dataset.
+- Never invent column names.
+- DAX formulas must use valid Power BI DAX syntax.
+- Do not generate a DAX measure if the required column does not exist.
 """
 
     response = client.chat.completions.create(
